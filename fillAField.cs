@@ -12,25 +12,27 @@ namespace Plugins
     {
         public void Execute(IServiceProvider serviceProvider)
         {
-            
+
             ITracingService tracingService =
                 (ITracingService)serviceProvider.GetService(typeof(ITracingService));
- 
+
             IPluginExecutionContext context = (IPluginExecutionContext)
                 serviceProvider.GetService(typeof(IPluginExecutionContext));
-			
+
             IOrganizationServiceFactory serviceFactory =
                 (IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory));
             IOrganizationService service = serviceFactory.CreateOrganizationService(context.UserId);
- 
+
             if (context.InputParameters.Contains("Target") &&
                 context.InputParameters["Target"] is Entity)
             {
                 Entity entity = (Entity)context.InputParameters["Target"];
 
-                try
-                { 
 
+                try
+                {
+                    //Fill in a field/attribute
+                    entity.Attributes.Add("jobtitle", "Senior Vice President");
                 }
 
                 catch (FaultException<OrganizationServiceFault> ex)
