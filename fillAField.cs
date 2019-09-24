@@ -8,7 +8,7 @@ using System.ServiceModel;
 
 namespace Plugins
 {
-    public class fillAField : IPlugin
+    public class FillAField : IPlugin
     {
         public void Execute(IServiceProvider serviceProvider)
         {
