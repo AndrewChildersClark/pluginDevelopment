@@ -42,7 +42,7 @@ namespace Plugins
 
                 catch (Exception ex)
                 {
-                    tracingService.Trace("fillAField: {0}", ex.ToString());
+                    tracingService.Trace("FillAField: {0}", ex.ToString());
                     throw;
                 }
             }
