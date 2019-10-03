@@ -29,11 +29,22 @@ namespace Plugins
 
                 try
                 {
-                    //Create two variables and set them equal to the values of two fields.
-                    string firstName = entity.Attributes["firstname"].ToString();
-                    string lastName = entity.Attributes["lastname"].ToString();
+                    //Create two variables
+                    string firstName = string.Empty;
+                    string lastName = string.Empty;
 
-                    //Fill in a field/attribute with the values above and with a space between them.
+                    //Check to see if the non required field/attribute exists in the attribute collection
+                    //This makes sure your plugin will not fail if first name is not entered
+                    if (entity.Attributes.Contains("firstname"))
+                    {
+                         //set the variable first name equal to the value from Dynamics
+                        firstName = entity.Attributes["firstname"].ToString();
+                    }
+                    //Required fields are present in the attribute collection on create
+                    //so we do not need to check for their presence
+                    lastName = entity.Attributes["lastname"].ToString();
+
+                    //Fill in a field/attribute with the values above.
                     entity.Attributes.Add("description", "Hello " + firstName + " " + lastName);
                 }
 
