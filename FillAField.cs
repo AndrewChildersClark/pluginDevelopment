@@ -37,7 +37,7 @@ namespace Plugins
 
                 catch (FaultException<OrganizationServiceFault> ex)
                 {
-                    throw new InvalidPluginExecutionException("An error occurred in fillAField in the Plugins Solution.", ex);
+                    throw new InvalidPluginExecutionException("An error occurred in FillAField in the Plugins Solution.", ex);
                 }
 
                 catch (Exception ex)
